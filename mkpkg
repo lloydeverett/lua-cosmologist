@@ -1,15 +1,17 @@
 #!/bin/bash
 
-OG_PWD=$(pwd)
+SCRIPT_DIR=$( dirname -- "$( realpath "$0"; )"; )
+ZIP_DIR=$( realpath "$1"; )
+ZIP_DIR_NAME=$( basename "$ZIP_DIR"; )
 
-RESOLVED_ARGS=()
-for arg in "$@"; do
-    RESOLVED_ARGS+=("$OG_PWD/$arg")
-done
+if ! [ -n "$ZIP_DIR" ]; then
+     echo "usage: mkpkg [directory containing main.lua]" >&2
+     exit 2
+fi
 
-SCRIPT_DIR=$( dirname -- "$( readlink -f -- "$0"; )"; )
+mkdir -p "$ZIP_DIR/bin"
 
 cd "$SCRIPT_DIR"
 
-ZIP_EXTRAS="${RESOLVED_ARGS[*]}" make
+OUTPUT_NAME="$ZIP_DIR_NAME" BIN_DIR="$ZIP_DIR/bin" ZIP_EXTRAS_DIR="$ZIP_DIR" make
 

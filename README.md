@@ -12,6 +12,10 @@ rm cosmocc-4.0.2.zip
 ## Usage
 
 ```bash
-
+cd example
+../mkpkg .
+./bin/example
 ```
+
+See the [platform notes listed here](https://github.com/jart/cosmopolitan?tab=readme-ov-file#platform-notes) if you have any difficulty running the output binary.
 

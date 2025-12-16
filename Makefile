@@ -1,11 +1,12 @@
 
 # --- Variables ---
+BIN_DIR     ?= $(realpath .)/bin
+OUTPUT_NAME ?= main
 CC          := $(realpath ./cosmocc/bin/cosmocc)
 ZIPCOPY     := $(realpath ./cosmocc/bin/zipcopy)
 LUA_VERSION := 5.4.8
 LUA_DIR     := lua-$(LUA_VERSION)
 LUA_SRC_DIR := $(LUA_DIR)/src
-BIN_DIR     := bin
 TARGET      := $(BIN_DIR)/main
 
 # Flags
@@ -29,15 +30,17 @@ all: clean-link-target $(TARGET) append-zip
 
 # --- append-zip Target ---
 append-zip:
-	zip $(BIN_DIR)/embed.zip ./main.lua $(ZIP_EXTRAS) > /dev/null
-	$(ZIPCOPY) $(BIN_DIR)/embed.zip $(BIN_DIR)/main
+ifdef ZIP_EXTRAS_DIR
+	(cd $(ZIP_EXTRAS_DIR) && zip -r $(BIN_DIR)/embed.zip . > /dev/null)
+	$(ZIPCOPY) $(BIN_DIR)/embed.zip $(BIN_DIR)/$(OUTPUT_NAME)
+endif
 
 # --- Link Rules ---
 
 $(TARGET): $(MAIN_OBJ) $(LUA_OBJS)
 	@echo "Linking..."
 	mkdir -p $(BIN_DIR)
-	$(CC) $(LDFLAGS) -o $@ $(MAIN_OBJ) $(LUA_OBJS)
+	$(CC) $(LDFLAGS) -o $(BIN_DIR)/$(OUTPUT_NAME) $(MAIN_OBJ) $(LUA_OBJS)
 
 # --- Compilation Rules ---
 

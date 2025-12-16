@@ -39,6 +39,12 @@ int main(int argc, char** argv) {
 
     luaL_openlibs(L);
 
+    if (luaL_dostring(L, "package.path = \"./?.lua;./?/init.lua;/zip/?.lua;/zip/lua/?.lua\"") != LUA_OK) {
+        fprintf(stderr, "[mkpkg] failed to set lua package.path");
+        lua_close(L);
+        return 1;
+    }
+
     lua_pushcfunction(L, lua_error_handler);
 
     if (luaL_loadfile(L, LUA_MAIN_PATH) != LUA_OK) {
