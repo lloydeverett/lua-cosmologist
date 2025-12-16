@@ -21,10 +21,12 @@ See the [platform notes listed here](https://github.com/jart/cosmopolitan?tab=re
 
 ## Installation
 
+Simply ensure the `cosmologist` program at the root of the repository is on your `$PATH`.
+
 ```bash
 mkdir -p "$HOME/.local/bin"
 ln -s $(realpath ./cosmologist) "$HOME/.local/bin/cosmologist"
 ```
 
-Then ensure `~/.local/bin` is on your shell `$PATH` (either install `envman` or append `export PATH="$HOME/.local/bin:$PATH"` to your shell profile).
+(The above assumes `~/.local/bin` is on your shell `$PATH`. If not, either install `envman` or append `export PATH="$HOME/.local/bin:$PATH"` to your shell profile.)
 
