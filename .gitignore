@@ -1,0 +1,6 @@
+/main.o
+/bin
+/**/*.o
+/*.zip
+/cosmocc
+
