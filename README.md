@@ -13,9 +13,18 @@ rm cosmocc-4.0.2.zip
 
 ```bash
 cd example
-../mkpkg .
+../cosmologist .
 ./bin/example
 ```
 
 See the [platform notes listed here](https://github.com/jart/cosmopolitan?tab=readme-ov-file#platform-notes) if you have any difficulty running the output binary.
+
+## Installation
+
+```bash
+mkdir -p "$HOME/.local/bin"
+ln -s $(realpath ./cosmologist) "$HOME/.local/bin/cosmologist"
+```
+
+Then ensure `~/.local/bin` is on your shell `$PATH` (either install `envman` or append `export PATH="$HOME/.local/bin:$PATH"` to your shell profile).
 

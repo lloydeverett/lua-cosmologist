@@ -27,20 +27,20 @@ int lua_error_handler(lua_State *L) {
 
 int main(int argc, char** argv) {
     if (access(LUA_MAIN_PATH, F_OK) != 0) {
-        fprintf(stderr, "[mkpkg] failed to find main.lua enclosed in binary (expected at %s)\n", LUA_MAIN_PATH);
+        fprintf(stderr, "[cosmologist] failed to find main.lua enclosed in binary (expected at %s)\n", LUA_MAIN_PATH);
         return 1;
     }
 
     lua_State *L = luaL_newstate();
     if (L == NULL) {
-        fprintf(stderr, "[mkpkg] memory allocation error while creating lua state\n");
+        fprintf(stderr, "[cosmologist] memory allocation error while creating lua state\n");
         return 1;
     }
 
     luaL_openlibs(L);
 
     if (luaL_dostring(L, "package.path = \"./?.lua;./?/init.lua;/zip/?.lua;/zip/lua/?.lua\"") != LUA_OK) {
-        fprintf(stderr, "[mkpkg] failed to set lua package.path");
+        fprintf(stderr, "[cosmologist] failed to set lua package.path");
         lua_close(L);
         return 1;
     }
@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
     lua_pushcfunction(L, lua_error_handler);
 
     if (luaL_loadfile(L, LUA_MAIN_PATH) != LUA_OK) {
-        fprintf(stderr, "[mkpkg] error loading lua: %s\n", lua_tostring(L, -1));
+        fprintf(stderr, "[cosmologist] error loading lua: %s\n", lua_tostring(L, -1));
         lua_close(L);
         return 1;
     }
