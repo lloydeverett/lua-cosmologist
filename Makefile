@@ -5,7 +5,7 @@ OUTPUT_NAME ?= main
 CC          := $(realpath ./cosmocc/bin/cosmocc)
 ZIPCOPY     := $(realpath ./cosmocc/bin/zipcopy)
 LUA_VERSION := 5.4.8
-LUA_DIR     := lua-$(LUA_VERSION)
+LUA_DIR     := lib/lua-$(LUA_VERSION)
 LUA_SRC_DIR := $(LUA_DIR)/src
 TARGET      := $(BIN_DIR)/main
 
