@@ -5,7 +5,7 @@ ZIP_DIR=$( realpath "$1"; )
 ZIP_DIR_NAME=$( basename "$ZIP_DIR"; )
 
 if ! [ -n "$ZIP_DIR" ]; then
-     echo "usage: mkpkg [directory containing main.lua]" >&2
+     echo "usage: cosmologist [directory containing main.lua]" >&2
      exit 2
 fi
 
