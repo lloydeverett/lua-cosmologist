@@ -1,0 +1,15 @@
+#!/bin/bash
+
+OG_PWD=$(pwd)
+
+RESOLVED_ARGS=()
+for arg in "$@"; do
+    RESOLVED_ARGS+=("$OG_PWD/$arg")
+done
+
+SCRIPT_DIR=$( dirname -- "$( readlink -f -- "$0"; )"; )
+
+cd "$SCRIPT_DIR"
+
+ZIP_EXTRAS="${RESOLVED_ARGS[*]}" make
+

@@ -58,6 +58,7 @@ clean:
 	rm -rf $(BIN_DIR)
 	rm -f $(MAIN_OBJ)
 	rm -f $(LUA_SRC_DIR)/*.o
+	rm -rf $(LUA_SRC_DIR)/../.aarch64
 
 rebuild: clean all
 

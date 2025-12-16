@@ -9,3 +9,9 @@ unzip cosmocc-4.0.2.zip -d cosmocc
 rm cosmocc-4.0.2.zip
 ```
 
+## Usage
+
+```bash
+
+```
+
