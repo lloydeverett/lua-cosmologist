@@ -3,5 +3,5 @@ If:
   PathMatch: .*\.c
 
 CompileFlags:
-  Add: [-I./lua-5.4.8/src, -L./lua-5.4.8/src, -llua, -lm]
+  Add: [-I./lib/lua-5.4.8/src, -L./lib/lua-5.4.8/src, -llua, -lm]
 
