@@ -2,7 +2,7 @@
 local M = {}
 
 function M.bar()
-    print("hello from module foo")
+    print("hello world from module foo")
 end
 
 return M
